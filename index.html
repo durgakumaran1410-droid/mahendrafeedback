@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Feedback</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-student">
+
+    <div class="stars-bg"></div>
+
+    <main class="container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="formProgress"></div>
+        </div>
+
+        <!-- Confetti Canvas -->
+        <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+        <header class="header">
+            <div class="logo-container">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h1>Nexus Events</h1>
+            </div>
+            <p class="subtitle">Shape the future of our college events.</p>
+        </header>
+
+        <section class="card glass-effect">
+            <form id="feedbackForm" class="form">
+
+                <div class="form-group">
+                    <label for="submitterName">Your Full Name</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user icon"></i>
+                        <input type="text" id="submitterName" name="submitterName" placeholder="Enter your full name"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group role-selector-group">
+                    <label>I am a...</label>
+                    <div class="role-selector">
+                        <label class="role-option active">
+                            <input type="radio" name="role" value="Student" checked>
+                            <i class="fa-solid fa-user-graduate"></i>
+                            <span>Student</span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="Teacher">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                            <span>Teacher</span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="Professor">
+                            <i class="fa-solid fa-chalkboard"></i>
+                            <span>Professor</span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="Coordinator">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                            <span>Coordinator</span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="HOD">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>HOD</span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="Dean">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>Dean</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Dynamic Details Section -->
+                <div id="dynamicFieldsContainer" class="dynamic-group">
+                    <!-- Student Specific Fields -->
+                    <div id="studentFields" class="sub-card hidden">
+                        <div class="sub-card-header">
+                            <i class="fa-solid fa-id-card"></i>
+                            <span>Student Academic Details</span>
+                        </div>
+                        <div class="fields-grid">
+                            <div class="form-group mini">
+                                <label for="year">Year</label>
+                                <select id="year" name="year">
+                                    <option value="" disabled selected>Year</option>
+                                    <option value="1">I Year</option>
+                                    <option value="2">II Year</option>
+                                    <option value="3">III Year</option>
+                                    <option value="4">IV Year</option>
+                                </select>
+                            </div>
+                            <div class="form-group mini">
+                                <label for="class_name">Class</label>
+                                <select id="class_name" name="class_name">
+                                    <option value="" disabled selected>Class</option>
+                                    <option value="A">Class A</option>
+                                    <option value="B">Class B</option>
+                                    <option value="C">Class C</option>
+                                    <option value="D">Class D</option>
+                                </select>
+                            </div>
+                            <div class="form-group mini">
+                                <label for="section">Section</label>
+                                <select id="section" name="section">
+                                    <option value="" disabled selected>Sec</option>
+                                    <option value="1">Sec 1</option>
+                                    <option value="2">Sec 2</option>
+                                    <option value="3">Sec 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentDept">Your Department</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-building icon"></i>
+                                <select id="studentDept" name="studentDept">
+                                    <option value="" disabled selected>Select Department</option>
+                                    <option value="CSE">Computer Science & Engineering</option>
+                                    <option value="ECE">Electronics & Communication</option>
+                                    <option value="EEE">Electrical & Electronics</option>
+                                    <option value="MECH">Mechanical Engineering</option>
+                                    <option value="CIVIL">Civil Engineering</option>
+                                    <option value="IT">Information Technology</option>
+                                    <option value="AIDS">AI & Data Science</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Staff Specific Fields -->
+                    <div id="staffFields" class="sub-card hidden">
+                        <div class="sub-card-header">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span>Staff Department Details</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="staffDept">Your Department</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-building icon"></i>
+                                <select id="staffDept" name="staffDept">
+                                    <option value="" disabled selected>Select Department</option>
+                                    <option value="CSE">Computer Science & Engineering</option>
+                                    <option value="ECE">Electronics & Communication</option>
+                                    <option value="EEE">Electrical & Electronics</option>
+                                    <option value="MECH">Mechanical Engineering</option>
+                                    <option value="CIVIL">Civil Engineering</option>
+                                    <option value="IT">Information Technology</option>
+                                    <option value="AIDS">AI & Data Science</option>
+                                    <option value="OFFICE">Admin Office</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventName">Which event did you attend?</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-calendar-check icon"></i>
+                        <input type="text" id="eventName" name="eventName" placeholder="e.g. Annual Tech Symposium 2026"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>How would you rate the event?</label>
+                    <div class="star-rating" id="starRating">
+                        <i class="fa-regular fa-star" data-value="1"></i>
+                        <i class="fa-regular fa-star" data-value="2"></i>
+                        <i class="fa-regular fa-star" data-value="3"></i>
+                        <i class="fa-regular fa-star" data-value="4"></i>
+                        <i class="fa-regular fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" name="rating" id="ratingValue" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">Any additional thoughts?</label>
+                    <textarea id="comments" name="comments" rows="4" maxlength="500"
+                        placeholder="Tell us what you loved, or what we can improve..."></textarea>
+                    <div class="char-counter"><span id="charCount">0</span> / 500</div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    <span>Submit Feedback</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <div class="spinner hidden"></div>
+                </button>
+            </form>
+
+            <div id="successMessage" class="hidden success-state">
+                <div class="success-icon-wrapper">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h2>Thank You!</h2>
+                <p>Your feedback is invaluable to us.</p>
+                <button class="btn-secondary" onclick="resetForm()">Submit Another</button>
+            </div>
+
+        </section>
+
+        <div class="admin-link-wrapper">
+            <a href="admin.html" class="admin-link">Are you the Principal? Log in here <i
+                    class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

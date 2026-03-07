@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Portal | Nexus Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-admin">
+
+    <div class="stars-bg"></div>
+
+    <!-- Login View -->
+    <main id="loginView" class="container container-small">
+        <header class="header">
+            <div class="logo-container">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h1>Principal Portal</h1>
+            </div>
+            <p class="subtitle">Secure access to all college event feedback.</p>
+        </header>
+
+        <section class="card glass-effect">
+            <form id="adminLoginForm" class="form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user icon"></i>
+                        <input type="text" id="username" name="username" placeholder="Enter username" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock icon"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="loginBtn">
+                    <span>Secure Login</span>
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <div class="spinner hidden"></div>
+                </button>
+            </form>
+        </section>
+        <div class="admin-link-wrapper" style="text-align:center;">
+            <a href="index.html" class="admin-link"><i class="fa-solid fa-arrow-left"></i> Back to Feedback Portal</a>
+        </div>
+    </main>
+
+    <!-- Dashboard View (Hidden by default) -->
+    <main id="dashboardView" class="container container-large hidden">
+        <header class="header dashboard-header">
+            <div class="logo-container">
+                <i class="fa-solid fa-chart-column"></i>
+                <h1>Feedback Dashboard</h1>
+            </div>
+            <button class="btn-danger" id="logoutBtn">
+                <i class="fa-solid fa-power-off"></i> Logout
+            </button>
+        </header>
+
+        <section class="card glass-effect dashboard-card">
+
+            <div class="dashboard-controls">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchFeedback" placeholder="Search by event or role...">
+                </div>
+                <div class="stats-overview">
+                    <div class="stat-box">
+                        <span class="stat-label">Total Responses</span>
+                        <span class="stat-value" id="totalCount">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Avg Rating</span>
+                        <span class="stat-value" id="avgRating">0.0 <i class="fa-solid fa-star text-warning"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="feedback-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Event Name</th>
+                            <th>Info</th>
+                            <th>Role</th>
+                            <th>Rating</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feedbackTableBody">
+                        <!-- Dynamic rows injected here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="loadingData" class="loading-state hidden">
+                <div class="spinner-large"></div>
+                <p>Loading Feedback Data...</p>
+            </div>
+
+            <div id="emptyData" class="empty-state hidden">
+                <i class="fa-regular fa-folder-open"></i>
+                <p>No feedback found.</p>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
